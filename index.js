@@ -31,6 +31,13 @@ async function run(){
             res.send(posts)
         });
 
+        // Post User API
+        app.post('/users', async (req, res) => {
+            const user = req.body;
+            const result = await userCollection.insertOne(user);
+            res.json(result);
+        })
+
         // Post Product API
         app.post('/posts', async (req, res) => {
             const name = req.body.name;
